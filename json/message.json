@@ -1,0 +1,28 @@
+{
+    "HTTP_CODES": {
+        "OK": 200,
+        "NO_CONTENT_FOUND": 204,
+        "MOVED_PERMANENTLY": 301,
+        "PERMANENT_REDIRECT": 308,
+        "BAD_REQUEST": 400,
+        "UNAUTHORIZED": 401,
+        "FORBIDDEN": 403,
+        "NOT_FOUND": 404,
+        "METHOD_NOT_ALLOWED": 405,
+        "NOT_ACCEPTABLE": 406,
+        "DUPLICATE_VALUE": 409,
+        "VALIDATION_ERROR": 422,
+        "UPGRADE_REQUIRED": 426,
+        "INTERNAL_SERVER_ERROR": 500
+    },
+    "RES_MESSAGE": {
+        "STOCK_LIST_FETCH": "Stock List fetched successfully",
+        "STOCK_LIST_FETCH_ERROR": "Error in fetching Stock List",
+        "COMPANY_INFO_FETCH": "Company info fetched successfully",
+        "COMPANY_INFO_FETCH_ERROR": "Error in fetching Company info",
+        "INTRADAY_CHART_DATA_FETCH": "Intraday Chart fetched successfully",
+        "INTRADAY_CHART_DATA_FETCH_ERROR": "Error in fetching Intraday Chart data",
+        "DAILY_CHART_END_OF_DAY_FETCH": "Daily end-of-day data fetched successfully",
+        "DAILY_CHART_END_OF_DAY_FETCH_ERROR": "Error in fetching Daily end-of-day data"
+    }
+}
