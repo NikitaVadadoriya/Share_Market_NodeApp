@@ -24,5 +24,8 @@
         "INTRADAY_CHART_DATA_FETCH_ERROR": "Error in fetching Intraday Chart data",
         "DAILY_CHART_END_OF_DAY_FETCH": "Daily end-of-day data fetched successfully",
         "DAILY_CHART_END_OF_DAY_FETCH_ERROR": "Error in fetching Daily end-of-day data"
+    },
+    "SOCKET_MESSAGE": {
+        "INTRADAY_CHART_DATA": "INTRADAY_CHART_DATA"
     }
 }

@@ -1,8 +1,8 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-
-const configurteMiddleware = require('./middleware/index');
+const socketio = require('socket.io');
+const { configurteMiddleware } = require('./middleware/index');
 const configureRoutes = require('./routes/index');
 const config = require('./config');
 
@@ -20,6 +20,17 @@ configureRoutes(app);
 /* Start server and listen for connections */
 const server = app.listen(config.PORT, () => {
   console.log(`listening on port ${config.PORT}...`);
+});
+
+/*  Handle real-time chart data with socket.io */
+global.io = socketio(server);
+
+io.on('connection', (socket) => {
+  console.log("User Connectiopn...");
+  // shareSocket.init(io)
+  socket.on('disconnect', () => {
+    console.log('User disconnected ....');
+  });
 });
 
 // catch 404 and forward to error handler

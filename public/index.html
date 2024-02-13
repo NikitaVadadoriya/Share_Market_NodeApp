@@ -15,8 +15,8 @@
     <script>
         const socket = io();
 
-        socket.on('stock_data', (data) => {
-            console.log("~~ Data ~~", data);
+        socket.on('INTRADAY_CHART_DATA', (data) => {
+  
             $('#stockData').text(`Latest Stock Price: $${data}`);
         });
     </script>
