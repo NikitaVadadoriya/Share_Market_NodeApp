@@ -23,9 +23,14 @@
         "INTRADAY_CHART_DATA_FETCH": "Intraday Chart fetched successfully",
         "INTRADAY_CHART_DATA_FETCH_ERROR": "Error in fetching Intraday Chart data",
         "DAILY_CHART_END_OF_DAY_FETCH": "Daily end-of-day data fetched successfully",
-        "DAILY_CHART_END_OF_DAY_FETCH_ERROR": "Error in fetching Daily end-of-day data"
+        "DAILY_CHART_END_OF_DAY_FETCH_ERROR": "Error in fetching Daily end-of-day data",
+        "MARKET_CAPITALIZATION_FETCH_ERROR": "Error in fetching Market Capitalization"
     },
     "SOCKET_MESSAGE": {
-        "INTRADAY_CHART_DATA": "INTRADAY_CHART_DATA"
+        "INTRADAY_CHART_DATA": "INTRADAY_CHART_DATA",
+        "COMPANY_INFO_CHART_DATA": "COMPANY_INFO_CHART_DATA",
+        "MARKET_CAPITALIZATION": "MARKET_CAPITALIZATION",
+        "SYMBOL_LIST": "SYMBOL_LIST",
+        "SYMBOL_UP_DOWN": "SYMBOL_UP_DOWN"
     }
 }

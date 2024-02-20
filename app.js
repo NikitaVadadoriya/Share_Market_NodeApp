@@ -6,6 +6,7 @@ const { configurteMiddleware } = require('./middleware/index');
 const configureRoutes = require('./routes/index');
 const config = require('./config');
 
+require("./models/index");
 var app = express();
 
 /* Config Express-Middleware */

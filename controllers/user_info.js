@@ -1,0 +1,1 @@
+const { RES_MESSAGE } = require('../json/message.json');

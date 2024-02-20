@@ -5,6 +5,7 @@
 // router.get('/', function(req, res, next) {
 //   res.render('index', { title: 'Express' });
 // });
+const userInfoRoute = require('./api/user_info');
 const staticListRoute = require('./api/stock_list');
 const companyInfoRoute = require('./api/company_info');
 const chartInfoRoute = require('./api/ShareUpDownChartInfo');
@@ -17,6 +18,7 @@ const configureRoutes = async (app) => {
   app.get('/', (req, res) => {
     return res.sendFile("./public/index.html")
   })
+  app.use('/api/user', userInfoRoute);
   app.use('/api/stock', staticListRoute);
   app.use('/api/stock/company', companyInfoRoute);
   app.use('/api/stock/chart', chartInfoRoute);
