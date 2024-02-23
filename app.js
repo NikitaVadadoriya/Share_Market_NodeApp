@@ -2,11 +2,11 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const socketio = require('socket.io');
+require("./models/index");
 const { configurteMiddleware } = require('./middleware/index');
 const configureRoutes = require('./routes/index');
 const config = require('./config');
 
-require("./models/index");
 var app = express();
 
 /* Config Express-Middleware */

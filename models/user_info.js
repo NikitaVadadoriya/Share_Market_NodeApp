@@ -31,7 +31,17 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    email:
+    userEmail:
+    {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    userPhone:
+    {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    dial_code:
     {
       allowNull: false,
       type: DataTypes.STRING
@@ -44,6 +54,10 @@ module.exports = (sequelize, DataTypes) => {
     password:
     {
       allowNull: false,
+      type: DataTypes.STRING
+    },
+    otp: {
+      allowNull: true,
       type: DataTypes.STRING
     },
     isDeleted:

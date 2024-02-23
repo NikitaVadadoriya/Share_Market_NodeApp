@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('user_infos', {
+    await queryInterface.createTable('user_info', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,7 +17,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
+      userEmail: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      userPhone: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      dial_code: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -28,6 +36,10 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      otp: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       isDeleted: {
         type: Sequelize.INTEGER,
@@ -44,6 +56,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('user_infos');
+    await queryInterface.dropTable('user_info');
   }
 };
