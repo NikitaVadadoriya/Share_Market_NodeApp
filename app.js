@@ -1,6 +1,10 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const logger = require("morgan");
+const cors = require("cors");
+const cookieParser = require('cookie-parser');
+
 const socketio = require('socket.io');
 require("./models/index");
 const { configurteMiddleware } = require('./middleware/index');
@@ -10,7 +14,14 @@ const config = require('./config');
 var app = express();
 
 /* Config Express-Middleware */
-configurteMiddleware(app);
+// configurteMiddleware(app);
+
+app.use(cors({ origin: "*" }));
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+global.__basedir = __dirname;
 
 /* Set-up static asset path */
 app.use(express.static(path.join(__dirname, 'public')));

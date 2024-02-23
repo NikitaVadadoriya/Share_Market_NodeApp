@@ -1,4 +1,5 @@
 const { RES_MESSAGE } = require("../json/message.json");
+const apiRes = require('../utils/apiResponse');
 const model = require("../models");
 
 module.exports = exports = (path, schema) => async (req, res, next) => {
@@ -12,7 +13,7 @@ module.exports = exports = (path, schema) => async (req, res, next) => {
         const context = error.details[0].context.message;
         console.log(`#validation - Error encountered at path: "${req.path}", data: ${JSON.stringify(dataForValidation)}, context: ${context}\n${error}`);
 
-        return BAD_REQUEST(res, String(error), context ? { context } : {});
+        return apiRes.BAD_REQUEST(res, String(error), context ? { context } : {});
     } else {
         // Overriding sanitized object
         req[path] = value;

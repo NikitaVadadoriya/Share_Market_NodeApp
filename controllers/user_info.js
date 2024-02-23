@@ -14,7 +14,7 @@ module.exports = {
         userEmail: Joi.string().required(),
         userPhone: Joi.string().required(),
         dial_code: Joi.string().required(),
-        userProfile: Joi.string().required(),
+        userProfile: Joi.string(),
         password: Joi.string().required(),
     }),
 
@@ -75,6 +75,14 @@ module.exports = {
             /* check if user email valid or not */
             if (await checkEmailRegex(userEmail)) return apiRes.NOT_ACCEPTABLE(res, RES_MESSAGE.USEREMAIL_NOT_VALID);
 
+            /* user profile */
+            await req.files.forEach((file) => {
+                console.log("~~ User Profile ~~", file);
+                if (file.fieldname === "userProfile") {
+                    req.body.userProfile = file.location
+                }
+            })
+
             /* encode Passrord */
             if (req.body.password) req.body.password = await encodeString(req.body.password);
 
@@ -128,6 +136,13 @@ module.exports = {
 
             /* check if user email valid or not */
             if (userEmail) if (await checkEmailRegex(userEmail)) return apiRes.NOT_ACCEPTABLE(res, RES_MESSAGE.USEREMAIL_NOT_VALID);
+
+            /* user profile */
+            await req.files.forEach((file) => {
+                if (file.fieldname === "userProfile") {
+                    req.body.userProfile = file.location
+                }
+            })
 
             const userInfoUpdate = await User_info.update({ ...req.body }, { where: { id: user_id } });
             return apiRes.OK(res, RES_MESSAGE.USERINFO_UPDATE, userInfoUpdate);
@@ -223,4 +238,19 @@ module.exports = {
             return apiRes.CATCH_ERROR(res, error.message);
         }
     }
+
+    /* 
+    
+            * Id
+        * user_id
+        * current_balance
+        * Status
+            * 0 -> per click + 1$
+            * 1 -> per click + Boost (Random number in to > 10)
+        * current_level
+        * next_level_amount
+        * createdAt
+        * updatedAt
+
+    */
 }
