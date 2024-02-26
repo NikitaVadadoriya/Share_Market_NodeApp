@@ -131,8 +131,8 @@ module.exports = {
             const { userEmail, userPhone } = req.body;
 
             /* check if user info alredy exist or not exist */
-            if (await checkIfItemExistsById({ userEmail: userEmail, isDeleted: 0 }, "user_info")) return apiRes.DUPLICATE_VALUE(res, RES_MESSAGE.USEREMAIL_ALREADY_EXIST);
-            if (await checkIfItemExistsById({ userPhone: userPhone, isDeleted: 0 }, "user_info")) return apiRes.DUPLICATE_VALUE(res, RES_MESSAGE.USERPHONE_NUMBER_ALREADY_EXIST);
+            if (!userEmail ? userEmail : await checkIfItemExistsById({ userEmail: userEmail, isDeleted: 0 }, "user_info")) return apiRes.DUPLICATE_VALUE(res, RES_MESSAGE.USEREMAIL_ALREADY_EXIST);
+            if (!userPhone ? userPhone : await checkIfItemExistsById({ userPhone: userPhone, isDeleted: 0 }, "user_info")) return apiRes.DUPLICATE_VALUE(res, RES_MESSAGE.USERPHONE_NUMBER_ALREADY_EXIST);
 
             /* check if user email valid or not */
             if (userEmail) if (await checkEmailRegex(userEmail)) return apiRes.NOT_ACCEPTABLE(res, RES_MESSAGE.USEREMAIL_NOT_VALID);
@@ -238,19 +238,4 @@ module.exports = {
             return apiRes.CATCH_ERROR(res, error.message);
         }
     }
-
-    /* 
-    
-            * Id
-        * user_id
-        * current_balance
-        * Status
-            * 0 -> per click + 1$
-            * 1 -> per click + Boost (Random number in to > 10)
-        * current_level
-        * next_level_amount
-        * createdAt
-        * updatedAt
-
-    */
 }

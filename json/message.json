@@ -36,13 +36,15 @@
         "USERINFO_LOGIN_SUCCESS": "User login successfully",
         "USERINFO_ERROR_LOGIN": "error in user login",
         "USEREMAIL_ALREADY_EXIST": "user email already registered",
+        "USERINFO_NOT_FOUND": "User not found",
+        "USEREMAIL_NOT_VALID": "user email not valid",
+        "WALLETE_CREATE": "Wallete created successfully",
+        "WALLETE_CREATE_ERROR": "error in creating Wallet",
         "CHANGE_LOGIN_PASSWORD_ERROR": "error in change login password",
         "CHANGE_LOGIN_PASSWORD": "Change login password successfully",
         "USERPHONE_NUMBER_ALREADY_EXIST": "user phone number already registered",
         "PASSWORD_INCORRECT": "The current password you entered is incorrect`",
         "PASSWORD_NOT_MATCH": "password does not match, with current password",
-        "USERINFO_NOT_FOUND": "User not found",
-        "USEREMAIL_NOT_VALID": "user email not valid",
         "UNAUTHORIZED_REQUEST": "Unauthorized request!",
         "OTP_SEND": "OTP sent successfully",
         "OTP_EXPIRED": "OTP has expired. Please request a new OTP",
@@ -56,6 +58,8 @@
         "COMPANY_INFO_CHART_DATA": "COMPANY_INFO_CHART_DATA",
         "MARKET_CAPITALIZATION": "MARKET_CAPITALIZATION",
         "SYMBOL_LIST": "SYMBOL_LIST",
-        "SYMBOL_UP_DOWN": "SYMBOL_UP_DOWN"
+        "SYMBOL_UP_DOWN": "SYMBOL_UP_DOWN",
+        "ADD_AMOUNT_IN_WALLET": "ADD_AMOUNT_IN_WALLET",
+        "FETCH_WALLET_DATA": "FETCH_WALLET_DATA"
     }
 }

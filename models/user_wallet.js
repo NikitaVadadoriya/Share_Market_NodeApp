@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class user_Wallet extends Model {
+  class user_wallet extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      user_Wallet.belongsTo(models.user_infom, { foreignKey: "user_id", as: "userInfo" });
+      user_wallet.belongsTo(models.user_info, { foreignKey: "user_id", as: "userInfo" });
     }
   }
-  user_Wallet.init({
+  user_wallet.init({
     id:
     {
       allowNull: false,
@@ -27,21 +27,31 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       references: { model: "user_info", key: "id" }
     },
+    current_level: {
+      allowNull: true,
+      type: DataTypes.INTEGER
+    },
     current_balance: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.DECIMAL
     },
-    current_level: {
-      allowNull: false,
-      type: DataTypes.INTEGER
-    },
-    status: {
-      allowNull: false,
-      type: DataTypes.INTEGER
+    increment_amount: {
+      allowNull: true,
+      type: DataTypes.DECIMAL
     },
     next_level_amount: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.DECIMAL
+    },
+    boost_status: {
+      allowNull: true,
+      type: DataTypes.INTEGER
+    },
+    isDeleted:
+    {
+      allowNull: true,
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     },
     createdAt:
     {
@@ -55,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'user_Wallet',
+    modelName: 'user_wallet',
   });
-  return user_Wallet;
+  return user_wallet;
 };

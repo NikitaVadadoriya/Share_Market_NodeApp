@@ -1,15 +1,16 @@
 const express = require('express');
-const path = require('path');
+const logger = require("morgan");
+const cors = require("cors");
 const cookieParser = require('cookie-parser');
-const socketio = require('socket.io');
-const config = require('../config');
 
 const configurteMiddleware = async (app) => {
     // view engine setup
-    app.use(express.static(path.resolve('./public')));
+    app.use(cors({ origin: "*" }));
+    app.use(logger("dev"));
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(cookieParser());
+    global.__basedir = __dirname;
 }
 
-module.exports = {configurteMiddleware};
+module.exports = { configurteMiddleware };

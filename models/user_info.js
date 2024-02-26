@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     userProfile:
     {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.STRING
     },
     password:

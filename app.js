@@ -1,30 +1,19 @@
 const createError = require('http-errors');
 const express = require('express');
-const path = require('path');
-const logger = require("morgan");
-const cors = require("cors");
-const cookieParser = require('cookie-parser');
-
 const socketio = require('socket.io');
 require("./models/index");
 const { configurteMiddleware } = require('./middleware/index');
 const configureRoutes = require('./routes/index');
 const config = require('./config');
+const shareMarketSocket = require('./socket/index');
 
 var app = express();
 
 /* Config Express-Middleware */
-// configurteMiddleware(app);
-
-app.use(cors({ origin: "*" }));
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-global.__basedir = __dirname;
+configurteMiddleware(app);
 
 /* Set-up static asset path */
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public')); 
 
 /* Set-up Routes */
 configureRoutes(app);
@@ -38,10 +27,24 @@ const server = app.listen(config.PORT, () => {
 global.io = socketio(server);
 
 io.on('connection', (socket) => {
-  console.log("User Connectiopn...");
-  // shareSocket.init(io)
-  socket.on('disconnect', () => {
-    console.log('User disconnected ....');
+  shareMarketSocket.init(socket, io)
+});
+// console.log("~~~  ~~~");
+// io.on('connection', (socket) => {
+//   console.log("User Connectiopn...");
+//   // shareSocket.init(io)
+//   socket.on('disconnect', () => {
+//     console.log('User disconnected ....');
+//   });
+// });
+
+// Error handling - close server
+process.on('unhandledRejection', (err) => {
+  // db.disconnect();
+
+  console.error(`Error: ${err.message}`);
+  server.close(() => {
+    process.exit(1);
   });
 });
 

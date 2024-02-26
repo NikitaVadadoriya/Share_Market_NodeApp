@@ -7,7 +7,7 @@ module.exports = {
     /* check if user info alredy exist or not exist */
     checkIfItemExistsById: async (key, modelName) => {
         const item = await model[modelName].findOne({ where: key });
-        if (!item) return false;
+        if (!item || item == null) return false;
         return true;
     },
 
@@ -57,10 +57,18 @@ module.exports = {
         });
     },
 
+    /* Verify the token using jwt.verify method */
+    verifyToken: async (token) => {
+        await jwt.verify(token, config.JWT_SECRET, async (error, decode) => {
+            if (error) return await error;
+            return await decode;
+        });
+    },
+
     /* Generate OTP */
     generateOTP: async (userOtp) => {
         // Generate a random 6-digit number
         const otp = userOtp ? userOtp : Math.floor(100000 + Math.random() * 900000);
         return otp.toString(); // Convert the number to a string
-    }
+    },
 }

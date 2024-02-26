@@ -14,12 +14,32 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         const socket = io();
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3MDg5MzA4NDIsImV4cCI6MTcwODk0MTY0Mn0.ySKm-mBfMExlG88l28JlBi2_n5EJbW16z89NmKJi31A";
 
-        socket.on('INTRADAY_CHART_DATA', (data) => {
+        // socket.emit("WALLET_AMOUNT_INCREMENT", (token));
 
-            $('#stockData').text(`Latest Stock Price: $${data}`);
-        });
+        // socket.on('INTRADAY_CHART_DATA', (data) => {
+        //     $('#stockData').text(`Latest Stock Price: $${data}`);
+        // });
+        
+        
+        
+        function myBoostFunction(status) {
+            socket.emit("ADD_AMOUNT_IN_WALLET", ({ token: token, boostStatus: status }));
+        }
+        function addAmount(status) {
+            socket.emit("ADD_AMOUNT_IN_WALLET", ({ token: token, boostStatus: status }));
+            socket.on('FETCH_WALLET_DATA', (walletData) => {
+                console.log(" Array Type Of ~~~>", walletData);
+                // $('#stockData').text(`Latest Stock Prices: ${formattedStockString}`);
+            });
+        }
     </script>
+    <label>
+        <p> Add Amount & Boost Amount</p>
+        <button onclick="addAmount(0)"> Click </button>
+        <button onclick="myBoostFunction(1)"> $ Boost $ </button>
+    </label>
 </body>
 
 </html>
