@@ -2,6 +2,7 @@ const express = require('express');
 const userInfoRoute = require('./api/user_info');
 const walletRoute = require('./api/user_wallet');
 const staticListRoute = require('./api/stock_list');
+const buyShareRoute = require('./api/buyShare');
 const companyInfoRoute = require('./api/company_info');
 const chartInfoRoute = require('./api/ShareUpDownChartInfo');
 
@@ -14,6 +15,7 @@ const configureRoutes = async (app) => {
   app.use('/api/user', userInfoRoute);
   app.use('/api/user/wallet', walletRoute);
   app.use('/api/stock', staticListRoute);
+  app.use('/api/stock/', buyShareRoute);
   app.use('/api/stock/company', companyInfoRoute);
   app.use('/api/stock/chart', chartInfoRoute);
 }

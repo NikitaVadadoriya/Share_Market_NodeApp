@@ -14,16 +14,16 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         const socket = io();
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3MDg5MzA4NDIsImV4cCI6MTcwODk0MTY0Mn0.ySKm-mBfMExlG88l28JlBi2_n5EJbW16z89NmKJi31A";
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3MDkwMDgwMTEsImV4cCI6MTcwOTAxODgxMX0.r5K3h3aZzd11__aaSxjiXDZvLWp6mOeH355FqbvnO9c";
 
         // socket.emit("WALLET_AMOUNT_INCREMENT", (token));
 
         // socket.on('INTRADAY_CHART_DATA', (data) => {
         //     $('#stockData').text(`Latest Stock Price: $${data}`);
         // });
-        
-        
-        
+
+
+
         function myBoostFunction(status) {
             socket.emit("ADD_AMOUNT_IN_WALLET", ({ token: token, boostStatus: status }));
         }
