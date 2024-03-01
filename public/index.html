@@ -14,15 +14,30 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         const socket = io();
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3MDkwMDgwMTEsImV4cCI6MTcwOTAxODgxMX0.r5K3h3aZzd11__aaSxjiXDZvLWp6mOeH355FqbvnO9c";
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3MDkyNzAxMDMsImV4cCI6MTcwOTI4MDkwM30.Y9J2PKqHWXYjOf5GhbwGO3uCfZ5g1CprA4R_pmWtIW0";
 
-        // socket.emit("WALLET_AMOUNT_INCREMENT", (token));
+        socket.emit("MY_STOCK_PORTFOLIO", ({ token: token }));
+        socket.on('FETCH_MY_STOCK_PORTFOLIO', (info) => {
+            console.log(" Fetch My Stock info  ~~~>", info);
+        });
 
-        // socket.on('INTRADAY_CHART_DATA', (data) => {
-        //     $('#stockData').text(`Latest Stock Price: $${data}`);
-        // });
+        /* Company Info */
+        socket.emit('MARKET_CAPITALIZATION', ({ symbol: "AAPL" }));
+        socket.on('FETCH_MARKET_CAPITALIZATION', (info) => {
+            console.log(" Fetch Market Capitalization info  ~~~>");
+        });
 
+        /* Company Info */
+        socket.emit("COMPANY_INFO", ({ symbol: "AAPL" }));
+        socket.on('FETCH_COMPANY_INFO', (info) => {
+            console.log(" Fetch Company info  ~~~>", info);
+        });
 
+        /* Calling Get Symbol List */
+        socket.emit("INTRADAY_CHART_DATA", ({ symbol: "AAPL" }));
+        socket.on('FETCH_INTRADAY_CHART_DATA', (symbolList) => {
+            console.log(" Fetch Symbol List  ~~~>", symbolList);
+        });
 
         function myBoostFunction(status) {
             socket.emit("ADD_AMOUNT_IN_WALLET", ({ token: token, boostStatus: status }));
@@ -31,7 +46,6 @@
             socket.emit("ADD_AMOUNT_IN_WALLET", ({ token: token, boostStatus: status }));
             socket.on('FETCH_WALLET_DATA', (walletData) => {
                 console.log(" Array Type Of ~~~>", walletData);
-                // $('#stockData').text(`Latest Stock Prices: ${formattedStockString}`);
             });
         }
     </script>

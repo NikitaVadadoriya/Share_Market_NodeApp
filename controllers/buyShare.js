@@ -1,7 +1,6 @@
 const Joi = require("joi");
 const apiRes = require("../utils/apiResponse");
 const { RES_MESSAGE } = require("../json/message.json");
-const { checkIfItemExistsById } = require("../utils/utils");
 const { User_info, User_wallet, Buy_share, Share_transactions } = global.models;
 
 async function checkShareRePurchase(body) {
