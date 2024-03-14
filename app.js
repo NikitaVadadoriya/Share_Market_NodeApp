@@ -11,9 +11,9 @@ var app = express();
 
 /* Config Express-Middleware */
 configurteMiddleware(app);
-
+global.__basedir = __dirname;
 /* Set-up static asset path */
-app.use(express.static(__dirname + '/public')); 
+app.use(express.static(__dirname + '/public'));
 
 /* Set-up Routes */
 configureRoutes(app);
@@ -27,7 +27,9 @@ const server = app.listen(config.PORT, () => {
 global.io = socketio(server);
 
 io.on('connection', (socket) => {
-  shareMarketSocket.init(socket, io)
+  shareMarketSocket.init(socket, io);
+
+  socket.on('desconnect', () => { });
 });
 // console.log("~~~  ~~~");
 // io.on('connection', (socket) => {
@@ -44,6 +46,7 @@ process.on('unhandledRejection', (err) => {
 
   console.error(`Error: ${err.message}`);
   server.close(() => {
+    console.log("ERROR : ->", err);
     process.exit(1);
   });
 });

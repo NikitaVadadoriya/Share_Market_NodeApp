@@ -10,7 +10,7 @@ const configurteMiddleware = async (app) => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(cookieParser());
-    global.__basedir = __dirname;
+    // global.__basedir = __dirname;
 }
 
 module.exports = { configurteMiddleware };

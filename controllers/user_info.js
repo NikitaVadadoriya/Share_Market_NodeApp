@@ -14,7 +14,6 @@ module.exports = {
         userEmail: Joi.string().required(),
         userPhone: Joi.string().required(),
         dial_code: Joi.string().required(),
-        userProfile: Joi.string(),
         password: Joi.string().required(),
     }),
 
@@ -24,7 +23,6 @@ module.exports = {
         userEmail: Joi.string(),
         userPhone: Joi.string(),
         dial_code: Joi.string(),
-        userProfile: Joi.string(),
         password: Joi.string(),
     }),
 

@@ -160,7 +160,7 @@ const init = (socket, io) => {
     });
 
     /* Get Stock List */
-    socket.on(SOCKET_MESSAGE.SYMBOL_LIST, async (item) => {
+    socket.on(SOCKET_MESSAGE.SYMBOL_LIST, async (items) => {
       try {
         let symbol_list = [];
         let symbolName = [];
@@ -229,10 +229,11 @@ const init = (socket, io) => {
     /* Company Stock Information data fetch */
     socket.on(SOCKET_MESSAGE.COMPANY_INFO, async (item) => {
       setInterval(async () => {
-        let apiUrl = `https://financialmodelingprep.com/api/v3/profile/${item.symbol}?apikey=${config.API_KEY}`
+        // let apiUrl = `https://financialmodelingprep.com/api/v3/profile/${item.symbol}?apikey=${config.API_KEY}`
+        let apiUrl = `https://financialmodelingprep.com/api/v3/quote/${item.symbol}?apikey=${config.API_KEY}`
         let { res, err } = await loadApi(apiUrl);
         if (res) {
-          io.emit(SOCKET_MESSAGE.FETCH_COMPANY_INFO, res);
+          io.emit(SOCKET_MESSAGE.FETCH_STOCK_INFO, res);
         } else {
           console.log("Error in Fetch Company Data :~>", err);
         }
