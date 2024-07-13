@@ -8,9 +8,11 @@ const chartInfoRoute = require('./api/ShareUpDownChartInfo');
 
 const configureRoutes = async (app) => {
   // app.use(upload.array());
-  app.get('/', (req, res) => {
-    return res.sendFile("./public/index.html")
-  })
+
+
+  // app.get('/', (req, res) => {
+  //   // return res.sendFile("./public/index.html")
+  // })
   app.use("/api/upload", express.static("upload"));
   app.use('/api/user', userInfoRoute);
   app.use('/api/user/wallet', walletRoute);
