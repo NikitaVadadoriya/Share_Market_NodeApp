@@ -15,10 +15,11 @@ global.__basedir = __dirname;
 /* Set-up static asset path */
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
   console.log("Wallcome Share Market Sofware.");
   res.send("node is running")
 });
+
 /* Set-up Routes */
 configureRoutes(app);
 
